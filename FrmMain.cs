@@ -30,11 +30,11 @@ namespace MyRayTracer
             ViewPlane vp = new ViewPlane();
             vp.LeftTopCorner = new Point3D(-2, -1, 0);
             vp.Width = 4;
-            vp.Height = 2;
+            vp.Height = 3;
             vp.ResW = 800;
             vp.ResH = 600;
             double xOffset = 4 / 800.0;
-            double yOffset = 2 / 600.0;
+            double yOffset = 3 / 600.0;
             bmp = new Bitmap(vp.ResW, vp.ResH);
             for (int i = 0; i < vp.ResW; i++)
             {
