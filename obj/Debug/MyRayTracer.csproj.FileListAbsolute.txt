@@ -1,0 +1,10 @@
+D:\桌面\计算机图形学\MyRayTracer\bin\Debug\MyRayTracer.exe.config
+D:\桌面\计算机图形学\MyRayTracer\bin\Debug\MyRayTracer.exe
+D:\桌面\计算机图形学\MyRayTracer\bin\Debug\MyRayTracer.pdb
+D:\桌面\计算机图形学\MyRayTracer\obj\Debug\MyRayTracer.csprojAssemblyReference.cache
+D:\桌面\计算机图形学\MyRayTracer\obj\Debug\MyRayTracer.Properties.Resources.resources
+D:\桌面\计算机图形学\MyRayTracer\obj\Debug\MyRayTracer.csproj.GenerateResource.cache
+D:\桌面\计算机图形学\MyRayTracer\obj\Debug\MyRayTracer.csproj.CoreCompileInputs.cache
+D:\桌面\计算机图形学\MyRayTracer\obj\Debug\MyRayTracer.exe
+D:\桌面\计算机图形学\MyRayTracer\obj\Debug\MyRayTracer.pdb
+D:\桌面\计算机图形学\MyRayTracer\obj\Debug\MyRayTracer.FrmMain.resources
