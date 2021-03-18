@@ -33,8 +33,10 @@ namespace MyRayTracer.BasicClass
             return Origin + t * _direction;
         }
 
-        public bool Hit(Sphere s)
+        public HitRecord Hit(Sphere s)
         {
+            HitRecord hitRecord = new HitRecord();
+
             Vector3D oc = _origin - s.Center;
             double a = _direction * _direction;
             double b = 2 * oc * _direction;
@@ -56,14 +58,16 @@ namespace MyRayTracer.BasicClass
                 Vector3D normalVector = (hitPoint - s.Center);
                 normalVector.Nomalize();//归一化
 
-                return true;
+                hitRecord.IsHit = true;
+                hitRecord.HitPoint = hitPoint;
+                hitRecord.Nomal = normalVector;
+                return hitRecord;
             }
             else
             {
-                return false;
+                hitRecord.IsHit = false;
+                return hitRecord;
             }
-
-
         }
 
 

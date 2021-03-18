@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasicClass\Color3D.cs" />
+    <Compile Include="BasicClass\HitRecord.cs" />
     <Compile Include="BasicClass\Point3D.cs" />
     <Compile Include="BasicClass\Ray.cs" />
     <Compile Include="BasicClass\Sphere.cs" />

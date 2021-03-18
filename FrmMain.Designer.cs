@@ -37,7 +37,7 @@ namespace MyRayTracer
             // 
             // btnView
             // 
-            this.btnView.Location = new System.Drawing.Point(887, 409);
+            this.btnView.Location = new System.Drawing.Point(242, 580);
             this.btnView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(88, 41);
@@ -49,16 +49,16 @@ namespace MyRayTracer
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(31, 11);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 32);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(800, 600);
+            this.pictureBox1.Size = new System.Drawing.Size(1000, 500);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(887, 529);
+            this.btnSave.Location = new System.Drawing.Point(475, 580);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(88, 41);
@@ -71,7 +71,7 @@ namespace MyRayTracer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1050, 632);
+            this.ClientSize = new System.Drawing.Size(1022, 632);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnView);
