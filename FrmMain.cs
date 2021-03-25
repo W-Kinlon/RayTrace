@@ -42,9 +42,13 @@ namespace MyRayTracer
             vp.ResH = 400;
 
             //光源的位置
-            Point3D lightPos = new Point3D(-1,2,0);
+            Point3D lightPos = new Point3D(-1, 2, 0);
             //光源的强度
             Color3D lightColor = new Color3D(1, 1, 1);
+            //环境光
+            Color3D ambientColor = new Color3D(1);
+            double ka = 0.3;
+
 
             double xOffset = vp.GetxOffset();
             double yOffset = vp.GetyOffset();
@@ -72,7 +76,7 @@ namespace MyRayTracer
                         L.Nomalize();
 
                         //计算漫反射颜色
-                        Color3D diffuseColor = kd * lightColor * (L * hitRecord.Nomal);
+                        Color3D diffuseColor = ka * ambientColor + kd * lightColor * (L * hitRecord.Nomal);
 
 
                         bmp.SetPixel(i, j, diffuseColor.ToSystemColor());
