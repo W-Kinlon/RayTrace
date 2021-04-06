@@ -7,15 +7,16 @@ using System.Threading.Tasks;
 
 namespace MyRayTracer.BasicClass
 {
-    class Sphere
+    class Sphere:Geometry
     {
         private Point3D _center;
         private double _radius;
-        private Color _color;
+        private Metiral _metiral = new Metiral();
 
         public double Radius { get => _radius; set => _radius = value; }
-        public Color Color { get => _color; set => _color = value; }
         internal Point3D Center { get => _center; set => _center = value; }
+        internal Metiral Metiral { get => _metiral; set => _metiral = value; }
+
         //材质
         /// <summary>
         /// 暂无

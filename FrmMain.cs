@@ -19,35 +19,59 @@ namespace MyRayTracer
         }
         Bitmap bmp;
         int resW, resH;//宽度、高度
-        private void Form1_Load(object sender, EventArgs e)
+        private void btnView_Click(object sender, EventArgs e)
+        
         {
         }
 
-        private void btnView_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
             //摄像头
-            Point3D cameraPos = new Point3D(0, 0, 0);
+            Point3D cameraPos = new Point3D(0, 0, -4);
 
             //球
-            Sphere sphere1 = new Sphere(new Point3D(0, 0, 1.5), 0.5);
-            //漫反射系数
-            double kd = 0.8;
+            Sphere sphere1 = new Sphere(new Point3D(0, -31, 1), 30);
+            sphere1.Metiral.Color = new Color3D(1, 0, 0);
+            sphere1.Metiral.Kd = 1;
+            sphere1.Metiral.Ks = 0.3;
+            sphere1.Metiral.Ns = 20;
+            Sphere sphere2 = new Sphere(new Point3D(0.8, 0, 1), 0.1);
+            sphere2.Metiral.Color = new Color3D(0, 1, 0);
+            sphere2.Metiral.Kd = 1.0;
+            sphere2.Metiral.Ks = 0.3;
+            sphere2.Metiral.Ns = 20;
+            Sphere sphere3 = new Sphere(new Point3D(-1.2, 0, 1), 0.5);
+            sphere3.Metiral.Color = new Color3D(0, 0, 1);
+            sphere3.Metiral.Kd = 1.0;
+            sphere3.Metiral.Ks = 0.3;
+            sphere3.Metiral.Ns = 20;
+
+
+
+            //添加场景
+            Scenes scenes = new Scenes();
+            scenes.Add(sphere1);
+            scenes.Add(sphere2);
+            scenes.Add(sphere3);
 
             //成像平面
             ViewPlane vp = new ViewPlane();
-            vp.LeftTopCorner = new Point3D(-2, 1, -1);
+            vp.LeftTopCorner = new Point3D(-2, 1, 1);
             vp.Width = 4;
             vp.Height = 2;
             vp.ResW = 800;
             vp.ResH = 400;
 
             //光源的位置
-            Point3D lightPos = new Point3D(-1, 2, 0);
+            Point3D lightPos = new Point3D(3, -4, 6);
             //光源的强度
-            Color3D lightColor = new Color3D(1, 1, 1);
+            Color3D lightColor = new Color3D(0.4);
+
+
             //环境光
             Color3D ambientColor = new Color3D(1);
-            double ka = 0.3;
+            double ka = 0.1;
+
 
 
             double xOffset = vp.GetxOffset();
@@ -67,19 +91,53 @@ namespace MyRayTracer
                     //初始光线
                     Ray primaryRay = new Ray(cameraPos, dir);
 
+
                     //计算交点
-                    HitRecord hitRecord = primaryRay.Hit(sphere1);
+                    HitRecord hitRecord = primaryRay.HitScenes(scenes);
+
                     if (hitRecord.IsHit)
                     {
                         //交点到光源的方向
                         Vector3D L = hitRecord.HitPoint - lightPos;
                         L.Nomalize();
 
-                        //计算漫反射颜色
-                        Color3D diffuseColor = ka * ambientColor + kd * lightColor * (L * hitRecord.Nomal);
+                        double cosTheta = (L * hitRecord.Nomal) / Math.Sqrt(L.Length() * L.Length() + hitRecord.Nomal.Length() * hitRecord.Nomal.Length());
+                        //double cosTheta = (L * hitRecord.Nomal);
+                        if (cosTheta > 0)
+                        {
+                            cosTheta = 0;
+                        }
+
+                        //交点到眼睛方向
+                        Vector3D V = hitRecord.HitPoint - cameraPos;
+                        V.Nomalize();
+
+
+                        //阴影光线
+                        Ray shadowRay = new Ray(hitRecord.HitPoint, L);
+
+                        if (shadowRay.shadowHitScenes(scenes) == false)
+                        {
+
+                        
+
+                        //镜面反射光路
+                        Vector3D R = 2 * hitRecord.Nomal * (hitRecord.Nomal * L) - L;
+                        R.Nomalize();
+
+                        //计算漫反射颜色+环境光+镜面反射
+                        Color3D diffuseColor = ka * ambientColor
+                                            + hitRecord.Metiral.Kd * hitRecord.Metiral.Color * lightColor * (L * hitRecord.Nomal)
+                                            //+ hitRecord.Metiral.Kd * hitRecord.Metiral.Color * lightColor * cosTheta
+                                            + hitRecord.Metiral.Ks * hitRecord.Metiral.Color * lightColor * Math.Pow((V * R), hitRecord.Metiral.Ns);
 
 
                         bmp.SetPixel(i, j, diffuseColor.ToSystemColor());
+                        }
+                        else
+                        {
+                            bmp.SetPixel(i, j, Color.Black);
+                        }
                     }
                     else
                     {

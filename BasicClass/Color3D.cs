@@ -60,6 +60,17 @@ namespace MyRayTracer.BasicClass
             return new Color3D(colorA.R + colorB.R, colorA.G + colorB.G, colorA.B + colorB.B);
         }
 
+        /// <summary>
+        /// 乘法
+        /// </summary>
+        /// <param name="colorA"></param>
+        /// <param name="colorB"></param>
+        /// <returns></returns>
+        public static Color3D operator *(Color3D colorA, Color3D colorB)
+        {
+            return new Color3D(colorA.R * colorB.R, colorA.G * colorB.G, colorA.B * colorB.B);
+        }
+
         public Color ToSystemColor()
         {
             int r = (int)(_r * 255);

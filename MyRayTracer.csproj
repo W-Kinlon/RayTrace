@@ -47,9 +47,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasicClass\Color3D.cs" />
+    <Compile Include="BasicClass\Geometry.cs" />
     <Compile Include="BasicClass\HitRecord.cs" />
+    <Compile Include="BasicClass\Metiral.cs" />
+    <Compile Include="BasicClass\Move.cs" />
     <Compile Include="BasicClass\Point3D.cs" />
     <Compile Include="BasicClass\Ray.cs" />
+    <Compile Include="BasicClass\Scenes.cs" />
     <Compile Include="BasicClass\Sphere.cs" />
     <Compile Include="BasicClass\Vector3D.cs" />
     <Compile Include="BasicClass\ViewPlane.cs" />
@@ -86,6 +90,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
